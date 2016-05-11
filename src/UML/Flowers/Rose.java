@@ -4,8 +4,12 @@ public class Rose extends Flower {
 
     private Rosebush rosebush;
 
+    public Rose(String name){
+        super(name);
+    }
+
     public Rose(String name, Rosebush rosebush) {
-        this.setName(name);
+        super(name);
         this.rosebush = rosebush;
     }
 

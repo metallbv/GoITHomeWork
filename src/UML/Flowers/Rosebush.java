@@ -27,4 +27,5 @@ public class Rosebush {
     public void deleteRose(Rose rose){
         roses.remove(rose);
     }
+
 }

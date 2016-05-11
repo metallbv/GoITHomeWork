@@ -5,10 +5,6 @@ public class Flower {
     private String name;
     private Bouquet bouquet;
 
-    public Flower(){
-
-    }
-
     public Flower(String name){
         this.name = name;
     }
