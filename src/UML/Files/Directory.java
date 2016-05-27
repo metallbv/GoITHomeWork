@@ -17,12 +17,13 @@ public class Directory {
         }
     }
 
-    public Directory(String name){
+    public Directory(String name) throws IncorrectSymbol{
 
-        if (isNameCorrect(name)) {
+        ArrayList<Character> incorrectSymbols = CheckNameCorrect(name);
+        if (incorrectSymbols.isEmpty()) {
         this.name = name;
         } else {
-            throw new IllegalArgumentException("Error: path name consist illegal symbol");
+            throw new IncorrectSymbol(name, incorrectSymbols.toString());
         }
 
     }
@@ -32,8 +33,7 @@ public class Directory {
     }
 
     // add new file in directory, Object "file" create inside object directory
-    public void addFile(String name){
-        File file = new File(name, this);
+    public void addFile(File file){
         files.add(file);
     }
 
@@ -47,20 +47,34 @@ public class Directory {
     }
 
     // remove file from directory
-    public void deleteFile(File file) {
-        files.remove(file);
+    public void deleteFile(File file) throws IllegalStateException{
+        if (files.isEmpty() || !files.contains(file)) {
+            throw new IllegalStateException("" + this + "hasn't contains file " + file);
+        } else {
+            files.remove(file);
+        }
     }
 
-    public boolean isNameCorrect(String name) {
+    public ArrayList<Character> CheckNameCorrect(String name) {
         char [] charsName = name.toCharArray();
-        boolean result = true;
+        ArrayList<Character> incorrectSymbols = new ArrayList<Character>();
+
         for (int i = 0; i < charsName.length; i++) {
             if (setIllegalChars.contains(charsName[i])) {
-                result = false;
-                break;
+                incorrectSymbols.add(charsName[i]);
             }
         }
-        return result;
+        return incorrectSymbols;
+    }
+
+    @Override
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("Directory ");
+        sb.append(this.getName());
+        sb.append(" contains: ");
+        sb.append(this.getFiles());
+        return sb.toString();
     }
 
 }

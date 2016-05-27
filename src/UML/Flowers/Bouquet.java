@@ -36,7 +36,11 @@ public class Bouquet {
         return flowers;
     }
 
-    public void deleteFlower(Flower flower){
-        flowers.remove(flower);
+    public void deleteFlower(Flower flower) throws IllegalStateException{
+        if (flowers.isEmpty() || !flowers.contains(flower)) {
+            throw new IllegalStateException("" + this + "hasn't contains flower " + flower);
+        } else {
+            flowers.remove(flower);
+        }
     }
 }

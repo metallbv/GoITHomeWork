@@ -15,8 +15,7 @@ public class Rosebush {
         this.name = name;
     }
 
-    public void addRose(String name){
-        Rose rose = new Rose(name, this);
+    public void addRose(Rose rose){
         roses.add(rose);
     }
 
@@ -24,8 +23,12 @@ public class Rosebush {
         return roses;
     }
 
-    public void deleteRose(Rose rose){
-        roses.remove(rose);
+    public void deleteRose(Rose rose) throws IllegalStateException{
+        if (roses.isEmpty() || !roses.contains(rose)) {
+            throw new IllegalStateException("" + this + "hasn't contains rose " + rose);
+        } else {
+            roses.remove(rose);
+        }
     }
 
 }

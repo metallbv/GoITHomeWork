@@ -36,8 +36,12 @@ public class Shop {
         return musicalInstruments;
     }
 
-    public void removeMusicalInstrument(MusicalInstrument musicalInstrument){
-        musicalInstruments.remove(musicalInstrument);
+    public void removeMusicalInstrument(MusicalInstrument musicalInstrument) throws IllegalStateException{
+        if (musicalInstruments.isEmpty() || !musicalInstruments.contains(musicalInstrument)) {
+            throw new IllegalStateException("" + this + "hasn't contains  musicalInstrument" + musicalInstrument);
+        } else {
+            musicalInstruments.remove(musicalInstrument);
+        }
     }
 
 }

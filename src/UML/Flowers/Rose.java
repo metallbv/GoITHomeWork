@@ -11,6 +11,7 @@ public class Rose extends Flower {
     public Rose(String name, Rosebush rosebush) {
         super(name);
         this.rosebush = rosebush;
+        rosebush.addRose(this);
     }
 
     public Rosebush getRosebush(){

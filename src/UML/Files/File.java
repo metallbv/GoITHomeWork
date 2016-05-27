@@ -7,6 +7,7 @@ public class File {
     public File(String name, Directory directory){
         this.name = name;
         this.directory = directory;
+        directory.addFile(this);
     }
 
     public void setName(String name){
@@ -23,6 +24,11 @@ public class File {
 
     public Directory getDirectory(){
         return directory;
+    }
+
+    @Override
+    public String toString() {
+        return this.getName();
     }
 
 }
