@@ -70,9 +70,9 @@ public class Directory {
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder();
-        sb.append("Directory ");
+        /*sb.append("Directory ");
         sb.append(this.getName());
-        sb.append(" contains: ");
+        sb.append(" contains: ");*/
         sb.append(this.getFiles());
         return sb.toString();
     }
