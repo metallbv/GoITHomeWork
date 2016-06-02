@@ -1,5 +1,7 @@
 package UML.Files;
 
+import UML.Cipher.CaesarCipher;
+
 import java.util.ArrayList;
 import java.util.Set;
 
@@ -9,6 +11,9 @@ import java.util.Set;
 public class PrintCollections {
 
     public void PrintAnyCollections(Set<Directory> collection) {
+
+        // Создаем класс шифратора
+        CaesarCipher cipher = new CaesarCipher();
 
         // у нас должны быть колонки одинакового размера, поэтому для каждого елемента коллекции получим
         // максимальный размер элемента
@@ -29,7 +34,7 @@ public class PrintCollections {
             ArrayList<File> files = directory.getFiles();
             for (int i = 0; i < files.size(); i++) {
                 String space = getSpace(files.get(i).getName(), columnsSize.get(i));
-                System.out.print(files.get(i).getName() + space + "|");
+                System.out.print(cipher.encryption(files.get(i).getName() + space + "|", 1));
             }
 
             System.out.println();
