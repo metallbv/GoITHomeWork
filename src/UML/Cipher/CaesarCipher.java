@@ -45,21 +45,21 @@ public class CaesarCipher {
                 }
                 outputString.append(upperCaseLetterMap.get(indexNewSymbol));
 
-            } else if (lowerCaseLetterMap.containsKey(currentSymbol)) {
+            } else if (lowerCaseLetterMap.containsValue(currentSymbol)) {
 
                 indexNewSymbol = currentSymbol - 'a' + shift;
                 if (indexNewSymbol > 25) {
                     indexNewSymbol -= 26;
                 }
-                outputString.append(upperCaseLetterMap.get(indexNewSymbol));
+                outputString.append(lowerCaseLetterMap.get(indexNewSymbol));
 
-            } else if (numberMap.containsKey(currentSymbol)) {
+            } else if (numberMap.containsValue((Integer) (currentSymbol - '0'))) {
 
                 indexNewSymbol = currentSymbol - '0' + shift;
                 if (indexNewSymbol > 9) {
                     indexNewSymbol -= 10;
                 }
-                outputString.append(upperCaseLetterMap.get(indexNewSymbol));
+                outputString.append(numberMap.get(indexNewSymbol + '0'));
 
             } else {
 
@@ -86,21 +86,21 @@ public class CaesarCipher {
                 }
                 outputString.append(upperCaseLetterMap.get(indexNewSymbol));
 
-            } else if (lowerCaseLetterMap.containsKey(currentSymbol)) {
+            } else if (lowerCaseLetterMap.containsValue(currentSymbol)) {
 
                 indexNewSymbol = currentSymbol - 'a' - shift;
                 if (indexNewSymbol < 0) {
                     indexNewSymbol += 26;
                 }
-                outputString.append(upperCaseLetterMap.get(indexNewSymbol));
+                outputString.append(lowerCaseLetterMap.get(indexNewSymbol));
 
-            } else if (numberMap.containsKey(currentSymbol)) {
+            } else if (numberMap.containsValue((Integer) (currentSymbol - '0'))) {
 
                 indexNewSymbol = currentSymbol - '0' - shift;
                 if (indexNewSymbol < 0) {
                     indexNewSymbol += 10;
                 }
-                outputString.append(upperCaseLetterMap.get(indexNewSymbol));
+                outputString.append(numberMap.get(indexNewSymbol + '0'));
 
             } else {
 
